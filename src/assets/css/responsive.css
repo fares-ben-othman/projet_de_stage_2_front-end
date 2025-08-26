@@ -1,0 +1,310 @@
+@charset "utf-8";
+@media only screen and (max-width:1199px) {}
+
+@media only screen and (min-width:992px) and (max-width:1199px) {}
+
+@media only screen and (min-width:992px) {
+    #nav-expander {
+        display: none
+    }
+}
+
+@media only screen and (max-width:991px) {
+
+    .tcd-header-1 .mainmenu ul.nav-menu,
+    .hire-me-btn {
+        display: none !important
+    }
+
+    .tcd-header-1 .container {
+        position: relative
+    }
+
+    .tcd-header-1 [class*=col-] {
+        position: inherit
+    }
+
+    .tcd-counter [class*=col-]+[class*=col-] {
+        border: 0
+    }
+
+    .tcd-counter .single-counter {
+        margin-bottom: 50px
+    }
+
+    .tcd-counter.sec-spacer {
+        padding-bottom: 50px
+    }
+
+    .tcd-banner .banner-wrapper .banner-content h1 {
+        font-size: 44px
+    }
+
+    .tcd-title p br {
+        display: none
+    }
+
+    .sidebar-widget {
+        margin-top: 80px
+    }
+
+    .author-widget .author-img .author-info {
+        position: initial;
+        bottom: 0;
+        width: 100%;
+        text-align: left;
+        padding: 20px 0;
+        left: auto;
+        -webkit-transform: none;
+        transform: none;
+        background: inherit
+    }
+
+    .author-widget .author-img {
+        margin-bottom: 0
+    }
+
+    .tcd-header-1.sticky {
+        position: initial
+    }
+
+    .tcd-about-right .about-img {
+        margin-bottom: 70px;
+        padding-right: 0
+    }
+
+    .tcd-about-right .about-desc p:last-child {
+        margin-bottom: 0
+    }
+
+    .tcd-banner.banner1 .banner-content {
+        text-align: center
+    }
+
+    .tcd-banner .banner-wrapper .banner-content h3 {
+        margin: 0 0 35px
+    }
+
+    .tcd-services .service-item {
+        margin-bottom: 50px
+    }
+
+    .tcd-services .service-item .watermark {
+        font-size: 10em;
+        left: 5%
+    }
+
+    .tcd-services .service-item .service-content {
+        max-width: 550px
+    }
+
+    .tcd-about .about-img {
+        padding-right: 0;
+        margin-bottom: 40px
+    }
+
+    .tcd-about .about-desc {
+        padding-left: 0
+    }
+
+    .tcd-testimonial .testi-carousel {
+        margin-top: 60px
+    }
+
+    .tcd-client-survey .row>div:first-child {
+        order: 2
+    }
+
+    .tcd-client-survey .row>div:last-child {
+        order: 1
+    }
+
+    .tcd-client-survey .survey-img {
+        margin-bottom: 30px
+    }
+
+    .tcd-counter .single-counter .count-icon {
+        font-size: 7em;
+        left: 12%
+    }
+
+    .tcd-title.tcd-title-center {
+        text-align: left
+    }
+
+    .tcd-title.tcd-title-center h2:after {
+        left: 0;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {}
+
+@media only screen and (max-width:767px) {
+    .owl-carousel .owl-nav {
+        display: none
+    }
+
+    #ps-slider .sl-title {
+        font-size: 36px;
+        margin-bottom: 10px
+    }
+
+    .ps-pagination {
+        margin-bottom: 50px
+    }
+
+    .about-cfication .row>div+div {
+        margin-top: 30px
+    }
+
+    .tcd-contact-info .row>div+div {
+        margin-top: 30px
+    }
+
+    .tcd-footer .row>div+div {
+        margin-top: 50px
+    }
+
+    .tcd-copyright .copyright-text,
+    .tcd-copyright .footer-share {
+        text-align: left
+    }
+
+    .tcd-copyright .footer-share {
+        margin-top: 8px
+    }
+
+    .tcd-title.mb50 {
+        margin-bottom: 45px !important
+    }
+
+    .tcd-about .tcd-title.mb50 {
+        margin-bottom: 0 !important
+    }
+
+    .tcd-class-schedule .schedule-item {
+        display: block;
+        flex-wrap: initial
+    }
+
+    .tcd-class-schedule .schedule-item>div {
+        max-width: 100%;
+        flex: initial;
+        text-align: center !important;
+        margin-bottom: 10px
+    }
+
+    .tcd-class-schedule .schedule-item .join-btn {
+        margin-top: 20px;
+        margin-bottom: 0
+    }
+
+    .tcd-contact-info .contact-info-item {
+        padding: 35px;
+        border: 1px solid #eee;
+        background: #fff
+    }
+
+    .tcd-footer .footer-widget .footer-menu li+li {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, .09)
+    }
+
+    .tcd-services {
+        padding: 30px 0 0px
+    }
+
+    h2 {
+        font-size: 32px;
+        line-height: 42px
+    }
+
+    .tcd-about {
+        padding: 30px 0
+    }
+
+    .tcd-testimonial {
+        padding: 30px 0
+    }
+
+    .tcd-client-survey,
+    .tcd-blog {
+        padding: 30px 0
+    }
+
+    .tcd-counter.sec-spacer {
+        padding: 30px 0 30px
+    }
+
+    .tcd-portfolio {
+        padding: 30px 0 55px
+    }
+
+    .tcd-team,
+    .tcd-contact-form {
+        padding: 30px 0 90px
+    }
+
+    .tcd-counter .counter-intro {
+        margin-bottom: 35px
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .tcd-banner {
+        padding: 70px 0 80px
+    }
+
+    #ps-slider .owl-item img {
+        min-height: 300px
+    }
+
+    #ps-slider .sl-desc {
+        display: none
+    }
+
+    #ps-slider .sl-title {
+        font-size: 28px;
+        margin-bottom: 10px
+    }
+
+    .tcd-about .about-edu .edu-item .date,
+    .tcd-about .about-exprnc .exprnc-item .date {
+        position: inherit;
+        display: block
+    }
+
+    .tcd-about .tcd-tabs .nav-tabs {
+        display: block
+    }
+
+    .tcd-about .tcd-tabs .nav-tabs li a {
+        margin-right: 0
+    }
+
+    nav.canvas-menu-area {
+        width: 17em
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .tcd-banner .banner-wrapper .banner-content h4 {
+        font-size: 26px;
+        line-height: normal;
+        margin-bottom: 8px
+    }
+
+    .tcd-banner .banner-wrapper .banner-content h1 {
+        font-size: 40px;
+        margin-bottom: 15px
+    }
+
+    .tcd-banner .banner-wrapper .banner-content h3 {
+        margin: 0 0 29px;
+        font-size: 22px;
+        line-height: normal
+    }
+}

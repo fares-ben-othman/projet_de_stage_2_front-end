@@ -1,0 +1,15 @@
+<section id="tcd-services" class="tcd-services sec-spacer bg-light-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let service of services">
+        <div class="service-item">
+          <div class="service-icon"><i class="{{service.icon}}"></i></div>
+          <h4>{{service.title}}</h4>
+          <p>{{service.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

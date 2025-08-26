@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "flaticon_thecodude";
+    src: url("../fonts/flaticon_thecodude.ttf") format("truetype"),
+url("../fonts/flaticon_thecodude.woff") format("woff"),
+url("../fonts/flaticon_thecodude.woff2") format("woff2"),
+url("../fonts/flaticon_thecodude.eot#iefix") format("embedded-opentype"),
+url("../images/flaticon_thecodude.svg#flaticon_thecodude") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_thecodude !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-arrow-point-to-right:before {
+    content: "\f101";
+}
+.flaticon-pointed-star:before {
+    content: "\f102";
+}
+.flaticon-play-button-arrowhead:before {
+    content: "\f103";
+}
+.flaticon-speech-bubble:before {
+    content: "\f104";
+}
+.flaticon-heart:before {
+    content: "\f105";
+}
+.flaticon-twitter:before {
+    content: "\f106";
+}
+.flaticon-instagram:before {
+    content: "\f107";
+}
+.flaticon-linkedin:before {
+    content: "\f108";
+}
+.flaticon-facebook-app-symbol:before {
+    content: "\f109";
+}

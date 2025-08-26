@@ -1,0 +1,166 @@
+/* Reset default browser spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Be Vietnam', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 27px;
+  font-weight: 400;
+  color: #212529;
+  background-color: #fff;
+  overflow-x: hidden;
+  text-align: left;
+}
+
+/* Box sizing for all elements */
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+/* Header */
+.tcd-header-1 {
+  width: 100%;
+
+  .tcd-topbar {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 0;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 5px;
+
+        i {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: #ffdd00;
+        }
+      }
+
+      span {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .menu-bar {
+    position: relative; /* scrolls normally */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: 0.7s;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px 0;
+
+    .container {
+      display: flex;
+      align-items: center; /* vertically center all children */
+      justify-content: space-between;
+
+      .logo {
+        display: flex;
+        align-items: center; /* vertically center the logo image */
+      }
+
+      .logo img {
+        height: 175px; /* keep your current logo size if you want */
+        object-fit: contain;
+      }
+
+      .mainmenu ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-left: 30px;
+
+          a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s, border-bottom 0.3s;
+
+            &:hover {
+              color: #007bff;
+              border-bottom: 2px solid #007bff;
+            }
+          }
+        }
+      }
+
+      .auth-buttons {
+        display: flex;
+        align-items: center;
+
+        .btn-register {
+          border: 1px solid #007bff;
+          border-radius: 5px;
+          padding: 6px 14px;
+          color: #007bff;
+          text-decoration: none;
+          margin-right: 10px;
+          transition: all 0.3s;
+
+          &:hover {
+            background: #007bff;
+            color: #fff;
+          }
+        }
+
+        .btn-login {
+          background: #007bff;
+          color: #fff;
+          padding: 6px 14px;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: all 0.3s;
+
+          &:hover {
+            background: #0056b3;
+          }
+        }
+      }
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .tcd-topbar .container, .menu-bar .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .mainmenu ul {
+      flex-direction: column;
+      width: 100%;
+
+      li {
+        margin: 10px 0;
+      }
+    }
+
+    .auth-buttons {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: flex-start;
+
+      .btn-register, .btn-login {
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -30,9 +30,44 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/bootstrap.min.css",
+  "src/assets/css/bootstrap.min_1.css",
+  "src/assets/css/animate.css",
+  "src/assets/css/flaticon.css",
+  "src/assets/css/flaticon_thecodude.css",
+  "src/assets/css/font-awesome.min.css",
+  "src/assets/css/magnific-popup.css",
+  "src/assets/css/owl.carousel.css",
+  "src/assets/css/main.min.css",
+  "src/assets/css/responsive.css",
+  "src/assets/css/responsive_1.css",
+  "src/assets/css/style.css",
+  "src/assets/css/style.min.css",
+  "src/assets/css/styles.css",
+  "src/assets/css/style_1.css",
+  "src/assets/css/swiper-bundle.min.css",
+  "src/assets/css/text-rotator.css",
+  "src/assets/css/typhography.css",
+  "src/assets/css/fluent-forms-public.css",
+  "src/assets/css/fluentform-public-default.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/js/jquery.min.js",
+  "src/assets/js/jquery-migrate.min.js",
+  "src/assets/js/bootstrap.bundle.min.js",
+  "src/assets/js/bootstrap-popup.min.js",
+  "src/assets/js/magnific-popup.min.js",
+  "src/assets/js/owl.carousel.min.js",
+  "src/assets/js/swiper-bundle.min.js",
+  "src/assets/js/jquery.nav.js",
+  "src/assets/js/waypoints.min.js",
+  "src/assets/js/text-rotator.js",
+  "src/assets/js/acmeticker.min.js",
+  "src/assets/js/frontend.min.js",
+  "src/assets/js/main.js",
+  "src/assets/js/main_1.js",
+  "src/assets/js/contact.form.js",
+  "src/assets/js/form-submission.js"]
           },
           "configurations": {
             "production": {
