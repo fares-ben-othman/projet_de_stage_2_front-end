@@ -1,21 +1,125 @@
-.tcd-contact-form {
-  padding: 80px 0;
+
+.contact-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://wallpaperaccess.com/full/33115.jpg') no-repeat center center/cover;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 60, 120, 0.7); // blue overlay
+  }
 }
 
-.tcd-contact-form input, 
-.tcd-contact-form textarea {
-  width: 100%;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
-.readon {
-  background: #007bff;
+.contact-box {
+  position: relative;
+  z-index: 2;
+  width: 500px;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   color: #fff;
-  padding: 12px 25px;
-  border-radius: 4px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+
+.form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: none;
+  }
+}
+
+
+.btn-contact {
+  width: 100%;
+  padding: 0.9rem;
   border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #007BFF, #00AEEF);
+  color: #fff;
   cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #0056b3, #008acb);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 150, 255, 0.4);
+  }
+}
+
+
+.contact-info {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+
+  i {
+    margin-right: 8px;
+    color: #00c4ff;
+  }
+
+  p {
+    margin: 0.4rem 0;
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

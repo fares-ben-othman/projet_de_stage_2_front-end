@@ -1,41 +1,43 @@
-<header class="tcd-header-1">
+<header class="header-wrapper">
   <!-- Top Bar -->
-  <div class="tcd-topbar">
+  <div class="topbar">
     <div class="container">
-      <div class="top-left">
-        <a href="tel:+8809678045045"><i class="fa fa-phone"></i> +21698989898</a>
-        <span>/</span>
-        <a href="mailto:[email protected]"><i class="fa fa-envelope-o"></i> Carsential@yahoo.com</a>
+      <div class="contact-info">
+        <a href="tel:+21698989898" class="animate-hover">
+          <i class="fa fa-phone"></i> +216 98 989 898
+        </a>
+        <span class="divider">|</span>
+        <a href="mailto:Carsential@yahoo.com" class="animate-hover">
+          <i class="fa fa-envelope-o"></i> Carsential@yahoo.com
+        </a>
       </div>
-      <div class="top-right">
-        <span>Stay Connected:</span>
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
+      <div class="social-links">
+        <span>Follow Us:</span>
+        <a href="#" class="animate-hover"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="animate-hover"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="animate-hover"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="animate-hover"><i class="fa fa-instagram"></i></a>
       </div>
     </div>
   </div>
 
-  <!-- Main Menu -->
-  <div class="menu-bar">
+  <!-- Main Navigation -->
+  <nav class="navbar">
     <div class="container">
       <div class="logo">
-        <img src="assets/images/logo1.png" alt="Logo">
+        <img src="assets/images/logo1.png" alt="Carsential Logo">
       </div>
-      <nav class="mainmenu">
-        <ul>
-          <li><a routerLink="/home">Home</a></li>
-          <li><a routerLink="/about">About</a></li>
-          <li><a routerLink="/services">Services</a></li>
-          <li><a routerLink="/blog">Blog</a></li>
-          <li><a routerLink="/contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="nav-links">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+        <a routerLink="/services" routerLinkActive="active" class="nav-link">Services</a>
+        <a routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+      </div>
       <div class="auth-buttons">
-        <a routerLink="/register" class="btn-register">Register</a>
-        <a routerLink="/login" class="btn-login">Login</a>
+        <a routerLink="/register" class="btn btn-register">Register</a>
+        <a routerLink="/login" class="btn btn-login">Login</a>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
