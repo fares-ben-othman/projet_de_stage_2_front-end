@@ -1,6 +1,6 @@
 
 .contact-container {
-  height: 100vh;
+  height: 110vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
   position: relative;
   z-index: 2;
   width: 500px;
-  padding: 2.5rem;
+  padding: 1.8rem;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
@@ -39,13 +39,15 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-align: center;
+  color: rgb(5, 5, 5);
 }
 
 .subtitle {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   margin-bottom: 1.5rem;
   opacity: 0.8;
   text-align: center;
+  color: #000000;
 }
 
 
