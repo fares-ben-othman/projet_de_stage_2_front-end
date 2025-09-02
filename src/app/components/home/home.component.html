@@ -1,16 +1,44 @@
+<nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="assets/images/logo1.png" alt="Carsential Logo">
+      </div>
+      <div class="nav-links">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+        <a routerLink="/services" routerLinkActive="active" class="nav-link">Services</a>
+        <a routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+      </div>
+      <div class="auth-buttons">
+        <a routerLink="/register" class="btn btn-register">Register</a>
+        <a routerLink="/login" class="btn btn-login">Login</a>
+      </div>
+    </div>
+  </nav>
 <section id="tcd-banner" class="tcd-banner banner1">
   <div class="banner-wrapper">
-    <div class="container">
-      <div class="row banner-middle">
-        <div class="col-lg-5 d-none d-lg-block">
-          <img src="assets/images/info-graph3.png" alt="Banner Info Graph" class="img-fluid">
+    <div class="container h-100 d-flex align-items-center">
+      <div class="row w-100 align-items-center">
+        <!-- Banner Image -->
+        <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+          <img src="assets/images/info-graph3.png" 
+               alt="Banner Info Graph" 
+               class="img-fluid" 
+               loading="lazy">
         </div>
+
+        <!-- Banner Content -->
         <div class="col-lg-7 col-md-12">
-          <div class="banner-content">
-            <h4>Creative Service</h4>
-            <h1>Total Business Solution</h1>
-            <p>We Offer Best Corporate Services, Business Consulting, and Professional Tips</p>
-            <a routerLink="/services" class="banner-btn">Discover More</a>
+          <div class="banner-content text-center text-lg-start">
+            <h4 class="banner-subtitle">Creative Service</h4>
+            <h1 class="banner-title">Total Business Solution</h1>
+            <p class="banner-description">
+              We Offer Best Corporate Services, Business Consulting, and Professional Tips
+            </p>
+            <a routerLink="/services" class="banner-btn" role="button">
+              Discover More
+            </a>
           </div>
         </div>
       </div>
