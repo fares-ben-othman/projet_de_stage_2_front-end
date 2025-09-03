@@ -1,15 +1,46 @@
-<section id="tcd-services" class="tcd-services sec-spacer bg-light-gray">
+<section class="services-section">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <div class="overlay"></div>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-4" *ngFor="let service of services">
-        <div class="service-item">
-          <div class="service-icon"><i class="{{service.icon}}"></i></div>
-          <h4>{{service.title}}</h4>
-          <p>{{service.description}}</p>
-        </div>
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-cards">
+
+      <div class="service-card">
+        <i class="fa fa-car fa-3x"></i> 
+        <h3>Fleet Management</h3>
+        <p>Add, transfer vehicles between agencies and manage availability in real-time.</p>
       </div>
+
+      <div class="service-card">
+        <i class="fa fa-file-contract fa-3x"></i> 
+        <h3>Rental Contracts</h3>
+        <p>Manage start & end dates, pricing, discounts and client agreements easily.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-wrench fa-3x"></i> 
+        <h3>Maintenance & Repairs</h3>
+        <p>Track maintenance, cleanings, repairs with automated billing.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-exchange-alt fa-3x"></i> 
+        <h3>Sub-Leasing</h3>
+        <p>Handle temporary unavailability and sub-rental of vehicles.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-chart-line fa-3x"></i> 
+        <h3>Financial Tracking</h3>
+        <p>Monitor revenue, expenses and net balance per vehicle automatically.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-tachometer-alt fa-3x"></i> 
+        <h3>Dashboard & Forecast</h3>
+        <p>Access daily reports and predict weekly performance with smart analytics.</p>
+      </div>
+
     </div>
   </div>
 </section>
-
-
