@@ -3,19 +3,35 @@
     <h2 class="title">Welcome Back</h2>
     <p class="subtitle">Sign in to rent your dream car</p>
 
-    <form>
+    <!-- Lier le formulaire Angular -->
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
       <div class="form-group">
         <label>Email</label>
-        <input type="email" placeholder="Enter your email" />
+        <input type="email" formControlName="email" placeholder="Enter your email" />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+          Email invalide
+        </div>
       </div>
 
       <div class="form-group">
         <label>Password</label>
-        <input type="password" placeholder="Enter your password" />
+        <input type="password" formControlName="mot_de_passe" placeholder="Enter your password" />
+        <div *ngIf="form.get('mot_de_passe')?.invalid && form.get('mot_de_passe')?.touched" class="error">
+          Mot de passe requis (min 6 caractères)
+        </div>
       </div>
 
-      <button type="submit" class="btn-login">Login</button>
-      <p class="register-link">Don’t have an account? <a href="/register">Register</a></p>
+      <button type="submit" class="btn-login" [disabled]="form.invalid || loading">
+        {{ loading ? 'Connexion...' : 'Login' }}
+      </button>
+
+      
+      
+
+      <p class="register-link">
+        Don’t have an account? <a routerLink="/register">Register</a>
+      </p>
     </form>
   </div>
 </div>

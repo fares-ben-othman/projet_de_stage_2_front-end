@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { DashboardComponent } from './layouts/dashboard-layout/dashboard.component';
+import { AuthGuard } from './guards/auth.guard'; // <- import AuthGuard
 
 const routes: Routes = [
   // Landing pages (header + footer)
@@ -36,13 +37,14 @@ const routes: Routes = [
     ]
   },
 
-  // Dashboard page
+  // Dashboard page (protégé)
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard] // <- sécurise la route
   },
 
-  // Optional: wildcard redirect
+  // Wildcard redirect
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
