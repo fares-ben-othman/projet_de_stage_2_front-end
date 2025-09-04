@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DashboardComponent } from './layouts/dashboard-layout/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     RegisterComponent,
     LoginComponent,
     LandingLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
