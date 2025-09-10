@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://carsentialbackend-cddqbzejakh0dqay.westeurope-01.azurewebsites.net",
+    "target": "http://localhost:80",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug",
