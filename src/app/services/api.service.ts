@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface RegisterDto {
   nom: string;
@@ -34,9 +34,11 @@ export class ApiService {
   login(payload: LoginDto): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/users/login`, payload);
   }
-  
-refreshToken(refreshToken: string) {
-  return this.http.post<{ accessToken: string }>(`${this.baseUrl}/auth/refresh`, { refreshToken });
-}
 
+  refreshToken(token: string): Observable<{ accessToken: string }> {
+    return this.http.post<{ accessToken: string }>(
+      `${this.baseUrl}/auth/refresh`,
+      { refreshToken: token }
+    );
+  }
 }

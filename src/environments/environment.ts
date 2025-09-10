@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'carsentialbackend-cddqbzejakh0dqay.westeurope-01.azurewebsites.net'
+  apiUrl: '/api'  // au lieu de mettre le lien complet vers Azure
 };

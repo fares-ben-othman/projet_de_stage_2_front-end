@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://carsentialbackend-cddqbzejakh0dqay.westeurope-01.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": { "^/api": "" }
+  }
+}

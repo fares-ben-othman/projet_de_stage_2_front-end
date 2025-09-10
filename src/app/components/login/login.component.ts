@@ -1,23 +1,18 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ApiService } from '../../services/api.service';   // service pour appeler le backend
-import { AuthService } from '../../services/auth.service'; // service pour stocker token
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService, LoginDto, AuthResponse } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  form!: FormGroup;  // <-- correspond à ton HTML
   loading = false;
   errorMsg = '';
-
-  // Formulaire normal (pas de nonNullable)
-  form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    mot_de_passe: ['', [Validators.required, Validators.minLength(8)]],
-  });
 
   constructor(
     private fb: FormBuilder,
@@ -26,39 +21,30 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  get f() {
-    return this.form.controls;
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      mot_de_passe: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  submit(): void {
+  submit(): void {  // <-- correspond à ton HTML
     if (this.form.invalid) {
-      this.form.markAllAsTouched();
+      this.errorMsg = 'Veuillez remplir tous les champs correctement.';
       return;
     }
 
     this.loading = true;
-    this.errorMsg = '';
-
-    // Forcer les valeurs à string pour TypeScript
-    const payload = {
-      email: this.form.value.email ?? '',
-      mot_de_passe: this.form.value.mot_de_passe ?? ''
-    };
-
-    this.api.login(payload).subscribe({
-      next: (res) => {
-        // Stocker tokens
-        this.auth.saveToken(res.accessToken);
-        localStorage.setItem('refreshToken', res.refreshToken);
-
-        // Rediriger vers dashboard
-        this.router.navigateByUrl('/dashboard');
+    this.api.login(this.form.value as LoginDto).subscribe({
+      next: (res: AuthResponse) => {
+        this.auth.saveToken(res.accessToken);  // <-- sauvegarde le token
         this.loading = false;
+        this.router.navigateByUrl('/dashboard'); // redirection après login
       },
       error: (err) => {
-        this.errorMsg = err?.error?.error || 'Identifiants incorrects';
+        this.errorMsg = err?.error?.message || 'Erreur lors de la connexion';
         this.loading = false;
-      },
+      }
     });
   }
 }

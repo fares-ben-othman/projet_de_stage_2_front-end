@@ -6,7 +6,7 @@ import {
   HttpEvent,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, throwError, switchMap, of } from 'rxjs';
+import { Observable, throwError, switchMap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { ApiService } from './api.service';
@@ -16,11 +16,7 @@ import { Router } from '@angular/router';
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;
 
-  constructor(
-    private auth: AuthService,
-    private api: ApiService,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthService, private api: ApiService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.auth.getToken();
@@ -38,24 +34,21 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private handle401Error(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.isRefreshing = true;
-    const refreshToken = localStorage.getItem('refreshToken');
-
+    const refreshToken = this.auth.getRefreshToken();
     if (!refreshToken) {
       this.auth.logout();
       this.router.navigateByUrl('/login');
-      return throwError(() => new Error('No refresh token available'));
+      return throwError(() => new Error('No refresh token'));
     }
 
-    // Appel à l’endpoint /auth/refresh pour obtenir un nouveau accessToken
     return this.api.refreshToken(refreshToken).pipe(
-      switchMap((res: any) => {
+      switchMap(res => {
         this.isRefreshing = false;
-        this.auth.saveToken(res.accessToken); // mettre à jour le token
-        // Rejoue la requête originale avec le nouveau token
+        this.auth.saveToken(res.accessToken);
         const clonedReq = req.clone({ setHeaders: { Authorization: `Bearer ${res.accessToken}` } });
         return next.handle(clonedReq);
       }),
-      catchError((err) => {
+      catchError(err => {
         this.isRefreshing = false;
         this.auth.logout();
         this.router.navigateByUrl('/login');
