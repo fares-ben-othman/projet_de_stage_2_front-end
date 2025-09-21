@@ -21,6 +21,10 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { DashboardComponent } from './layouts/dashboard-layout/dashboard.component';
 import { ContentDashComponent } from './content-dash/content-dash.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
+import { RentalsComponent } from './components/rentals/rentals.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { FinanceComponent } from './components/finance/finance.component';
+import { InterventionsComponent } from './components/interventions/interventions.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
     DashboardComponent,
     ContentDashComponent,
     VehiclesComponent,
+    RentalsComponent,
+    ClientsComponent,
+    FinanceComponent,
+    InterventionsComponent,
     
   ],
   imports: [
