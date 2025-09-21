@@ -1,7 +1,7 @@
 <div class="clients-dashboard">
   <div class="actions-bar">
     <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (ngModelChange)="filterClients()">
-    <button class="btn-add">Ajouter Client</button>
+    <button class="btn-add" (click)="openCreateForm()">Ajouter Client</button>
   </div>
 
   <table class="clients-table">
@@ -25,11 +25,24 @@
         <td>{{ client.telephone }}</td>
         <td>{{ client.cin }}</td>
         <td class="actions">
-          <button class="btn-details" (click)="viewDetails(client)">Détails</button>
-          <button class="btn-edit" (click)="editClient(client)">Éditer</button>
+          <button class="btn-edit" (click)="openEditForm(client)">Éditer</button>
           <button class="btn-delete" (click)="deleteClient(client)">Supprimer</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Modal Formulaire Client -->
+  <div *ngIf="showFormModal" class="modal">
+    <form [formGroup]="clientForm" (ngSubmit)="submitForm()">
+      <input formControlName="numero_permis" placeholder="Numéro Permis" [readonly]="editingClient">
+      <input formControlName="nom" placeholder="Nom">
+      <input formControlName="prenom" placeholder="Prénom">
+      <input formControlName="email" placeholder="Email">
+      <input formControlName="telephone" placeholder="Téléphone">
+      <input formControlName="cin" placeholder="CIN">
+      <button type="submit">{{ editingClient ? 'Modifier' : 'Créer' }}</button>
+      <button type="button" (click)="showFormModal=false">Annuler</button>
+    </form>
+  </div>
 </div>

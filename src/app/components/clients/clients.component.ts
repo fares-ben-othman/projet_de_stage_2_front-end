@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-// Interface pour typer un client
-interface Client {
-  numero_permis: string;
-  nom: string;
-  prenom: string;
-  email: string;
-  telephone: string;
-  cin: string;
-}
+import { Client, ClientService } from '../../services/client.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-clients',
@@ -16,60 +8,95 @@ interface Client {
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-
-  searchTerm: string = '';
   clients: Client[] = [];
   filteredClients: Client[] = [];
+  searchTerm: string = '';
 
-  constructor() { }
+  clientForm!: FormGroup;
+  editingClient: Client | null = null;
+  showFormModal: boolean = false;
+
+  constructor(private clientService: ClientService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // Données initiales (à remplacer par une API plus tard)
-    this.clients = [
-      { numero_permis: '123', nom: 'Ben', prenom: 'Fares', email: 'fares@example.com', telephone: '12345678', cin: 'AA123' },
-      { numero_permis: '124', nom: 'Doe', prenom: 'John', email: 'john@example.com', telephone: '87654321', cin: 'BB456' },
-      { numero_permis: '125', nom: 'Smith', prenom: 'Anna', email: 'anna@example.com', telephone: '55555555', cin: 'CC789' },
-      { numero_permis: '126', nom: 'Martin', prenom: 'Paul', email: 'paul@example.com', telephone: '44444444', cin: 'DD012' }
-      // tu peux ajouter d'autres clients ici
-    ];
-
-    // Initialiser filteredClients
-    this.filteredClients = [...this.clients];
+    this.loadClients();
+    this.initForm();
   }
 
-  // Filtrer les clients en fonction du searchTerm
+  loadClients(): void {
+    this.clientService.getAll().subscribe({
+      next: (data) => {
+        this.clients = data;
+        this.filteredClients = [...this.clients];
+      },
+      error: (err) => console.error('Error loading clients', err)
+    });
+  }
+
+  initForm(): void {
+    this.clientForm = this.fb.group({
+      numero_permis: ['', Validators.required],
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telephone: ['', Validators.required],
+      cin: ['', Validators.required]
+    });
+  }
+
   filterClients(): void {
     const term = this.searchTerm.toLowerCase().trim();
-
-    if (!term) {
-      this.filteredClients = [...this.clients];
-      return;
-    }
-
-    this.filteredClients = this.clients.filter(client =>
-      client.nom.toLowerCase().includes(term) ||
-      client.prenom.toLowerCase().includes(term) ||
-      client.email.toLowerCase().includes(term) ||
-      client.telephone.includes(term) ||
-      client.cin.toLowerCase().includes(term)
+    this.filteredClients = this.clients.filter(c =>
+      c.numero_permis.toLowerCase().includes(term) ||
+      c.nom.toLowerCase().includes(term) ||
+      c.prenom.toLowerCase().includes(term) ||
+      c.email.toLowerCase().includes(term) ||
+      c.telephone.toLowerCase().includes(term) ||
+      c.cin.toLowerCase().includes(term)
     );
   }
 
-  // Méthodes pour les boutons (à compléter selon ton besoin)
-  viewDetails(client: Client): void {
-    console.log('Voir détails de', client);
+  openCreateForm(): void {
+    this.editingClient = null;
+    this.clientForm.reset();
+    this.showFormModal = true;
   }
 
-  editClient(client: Client): void {
-    console.log('Éditer client', client);
+  openEditForm(client: Client): void {
+    this.editingClient = client;
+    this.clientForm.patchValue(client);
+    this.showFormModal = true;
   }
 
-  deleteClient(client: Client): void {
-    const confirmDelete = confirm(`Voulez-vous vraiment supprimer ${client.nom} ${client.prenom} ?`);
-    if (confirmDelete) {
-      this.clients = this.clients.filter(c => c.numero_permis !== client.numero_permis);
-      this.filterClients(); // Mettre à jour la liste filtrée
+  submitForm(): void {
+    if (this.clientForm.invalid) return;
+
+    const clientData: Client = this.clientForm.value;
+
+    if (this.editingClient) {
+      this.clientService.update(this.editingClient.numero_permis, clientData).subscribe({
+        next: () => {
+          this.loadClients();
+          this.showFormModal = false;
+        },
+        error: (err) => console.error('Update error', err)
+      });
+    } else {
+      this.clientService.create(clientData).subscribe({
+        next: () => {
+          this.loadClients();
+          this.showFormModal = false;
+        },
+        error: (err) => console.error('Create error', err)
+      });
     }
   }
 
+  deleteClient(client: Client): void {
+    if (!confirm(`Supprimer le client ${client.nom} ${client.prenom}?`)) return;
+    this.clientService.delete(client.numero_permis).subscribe({
+      next: () => this.loadClients(),
+      error: (err) => console.error('Delete error', err)
+    });
+  }
 }
