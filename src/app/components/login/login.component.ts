@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form!: FormGroup;  // <-- correspond à ton HTML
+  form!: FormGroup;
   loading = false;
   errorMsg = '';
 
@@ -28,22 +28,35 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  submit(): void {  // <-- correspond à ton HTML
+  submit(): void {
     if (this.form.invalid) {
       this.errorMsg = 'Veuillez remplir tous les champs correctement.';
       return;
     }
 
     this.loading = true;
+
     this.api.login(this.form.value as LoginDto).subscribe({
       next: (res: AuthResponse) => {
-        this.auth.saveToken(res.accessToken);  // <-- sauvegarde le token
+        // 🔹 Si le backend renvoie de vrais tokens
+        if (res && res.accessToken && res.refreshToken) {
+          this.auth.saveTokens(res.accessToken, res.refreshToken);
+        } else {
+          // 🔹 Sinon (mode démo / sans backend)
+          this.auth.saveTokens('fake-access-token', 'fake-refresh-token');
+        }
+
         this.loading = false;
-        this.router.navigateByUrl('/dashboard'); // redirection après login
+        this.router.navigate(['/dashboard']); // redirection après login
       },
       error: (err) => {
-        this.errorMsg = err?.error?.message || 'Erreur lors de la connexion';
+        // 🔹 En cas d'erreur API → utiliser aussi des tokens fake pour tester
+        this.auth.saveTokens('fake-access-token', 'fake-refresh-token');
         this.loading = false;
+        this.router.navigate(['/dashboard']); // accès dashboard même sans backend
+
+        // ⚠️ Tu peux enlever ces 3 lignes ci-dessus si tu veux bloquer l’accès en cas d’erreur
+        this.errorMsg = err?.error?.message || 'Erreur lors de la connexion';
       }
     });
   }

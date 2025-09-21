@@ -7,53 +7,81 @@
   background: #f4f6f8;
   color: #333;
 
-  /* Sidebar */
+  /* Sidebar Pro Style Vision UI */
   .sidebar {
     width: 250px;
-    background: #1e3a8a; /* primary blue */
+    height: 100vh;
+    background: linear-gradient(135deg, #141727, #3a416f); /* Gradient élégant */
     color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
 
     .logo {
       text-align: center;
       margin-bottom: 40px;
 
       img {
-        max-width: 150px;
-        border-radius: 8px;
+        max-width: 140px;
+        border-radius: 10px;
       }
     }
 
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 8px;
+      margin-top: 20px;
 
       a {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 12px 15px;
-        border-radius: 6px;
-        color: #fff;
+        padding: 12px 20px;
+        margin: 2px 16px;
+        border-radius: 8px;
+        color: #cbd5e1; /* gris clair */
         text-decoration: none;
         font-weight: 500;
+        font-size: 0.95rem;
         transition: all 0.3s ease;
-
-        &.active,
-        &:hover {
-          background: #2563eb;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+        position: relative;
 
         i {
           font-size: 18px;
+          min-width: 22px;
+          text-align: center;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* Effet hover */
+        &:hover {
+          background: rgba(255, 255, 255, 0.08);
+          color: #fff;
+          transform: translateX(6px);
+        }
+
+        &:hover i {
+          color: #00d4ff; /* Accent cyan/bleu */
+          transform: scale(1.2);
+        }
+
+        /* Actif */
+        &.active {
+          background: linear-gradient(135deg, #00d4ff, #0077ff);
+          color: #fff;
+          font-weight: 600;
+          box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        &.active i {
+          color: #fff;
         }
       }
     }

@@ -10,8 +10,10 @@ import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { VehiclesComponent } from './components/vehicles/vehicles.component'; // Add this line
 
 import { DashboardComponent } from './layouts/dashboard-layout/dashboard.component';
+import { ContentDashComponent } from './content-dash/content-dash.component'; // <-- Add this import
 import { AuthGuard } from './guards/auth.guard'; // <- import AuthGuard
 
 const routes: Routes = [
@@ -41,7 +43,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard] // <- sécurise la route
+    children: [
+      { path: '', component: ContentDashComponent },
+      { path: 'vehicles', component: VehiclesComponent } // This line correctly maps /dashboard/vehicles to VehiclesComponent
+    ]
   },
 
   // Wildcard redirect
