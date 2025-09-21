@@ -1,1 +1,35 @@
-<p>clients works!</p>
+<div class="clients-dashboard">
+  <div class="actions-bar">
+    <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (ngModelChange)="filterClients()">
+    <button class="btn-add">Ajouter Client</button>
+  </div>
+
+  <table class="clients-table">
+    <thead>
+      <tr>
+        <th>Numéro Permis</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>CIN</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of filteredClients">
+        <td>{{ client.numero_permis }}</td>
+        <td>{{ client.nom }}</td>
+        <td>{{ client.prenom }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.telephone }}</td>
+        <td>{{ client.cin }}</td>
+        <td class="actions">
+          <button class="btn-details" (click)="viewDetails(client)">Détails</button>
+          <button class="btn-edit" (click)="editClient(client)">Éditer</button>
+          <button class="btn-delete" (click)="deleteClient(client)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

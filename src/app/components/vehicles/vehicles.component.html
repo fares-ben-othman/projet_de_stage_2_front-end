@@ -1,50 +1,76 @@
 <div class="vehicles-dashboard">
 
-  <!-- Bouton Ajouter -->
+  <!-- Actions Bar -->
   <div class="actions-bar">
-    <button class="btn-add">+ Ajouter un véhicule</button>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterVehicles()"
+      placeholder="Search a vehicle"
+    />
+    <button class="btn-add" (click)="openCreateForm()">+ Add Vehicle</button>
   </div>
 
-  <!-- Cards des véhicules -->
-  <div class="vehicles-cards">
+  <!-- Vehicles Table -->
+  <table class="vehicles-table">
+    <thead>
+      <tr>
+        <th>Registration</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Mileage</th>
+        <th>Status</th>
+        <th>Insurance Date</th>
+        <th>Agency ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of filteredVehicles">
+        <td>{{ vehicle.immatriculation }}</td>
+        <td>{{ vehicle.marque }}</td>
+        <td>{{ vehicle.modele }}</td>
+        <td>{{ vehicle.annee }}</td>
+        <td>{{ vehicle.kilometrage | number }}</td>
+        <td>{{ vehicle.statut }}</td>
+        <td>{{ vehicle.date_assurance }}</td>
+        <td>{{ vehicle.agence_id }}</td>
+        <td class="actions">
+          <button class="btn-details" (click)="openEditForm(vehicle)">Edit</button>
+          <button class="btn-delete" (click)="deleteVehicle(vehicle)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- Exemple Card -->
-    <div class="vehicle-card status-disponible">
-      <div class="card-header">
-        <h3>Toyota Corolla</h3>
-        <span class="status">Disponible</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Immatriculation :</strong> 123-TN-456</p>
-        <p><strong>Modèle :</strong> Corolla 2020</p>
-        <p><strong>Kilométrage :</strong> 85,000 km</p>
-        <p><strong>Assurance :</strong> 2025-03-15</p>
-      </div>
-      <div class="card-footer">
-        <button class="btn-details">Voir détails</button>
-        <button class="btn-edit">Éditer</button>
-        <button class="btn-delete">Supprimer</button>
-      </div>
+  <!-- Modal Form -->
+  <div class="modal" *ngIf="showFormModal">
+    <div class="modal-content">
+      <h3>{{ editingVehicle ? 'Edit Vehicle' : 'Add Vehicle' }}</h3>
+      <form [formGroup]="vehicleForm" (ngSubmit)="submitForm()">
+        <input formControlName="immatriculation" placeholder="Registration" required />
+        <input formControlName="marque" placeholder="Brand" required />
+        <input formControlName="modele" placeholder="Model" required />
+        <input type="number" formControlName="annee" placeholder="Year" required />
+        <input type="number" formControlName="kilometrage" placeholder="Mileage" required />
+        <select formControlName="statut">
+          <option value="disponible">Available</option>
+          <option value="loue">Rented</option>
+          <option value="maintenance">Maintenance</option>
+          <option value="leasing">Leasing</option>
+          <option value="transfert">Transfer</option>
+          <option value="reserve">Reserved</option>
+        </select>
+        <input type="date" formControlName="date_assurance" required />
+        <input type="number" formControlName="agence_id" placeholder="Agency ID" required />
+
+        <div class="form-actions">
+          <button type="submit">{{ editingVehicle ? 'Update' : 'Create' }}</button>
+          <button type="button" (click)="showFormModal = false">Cancel</button>
+        </div>
+      </form>
     </div>
-
-    <!-- Une autre card -->
-    <div class="vehicle-card status-loue">
-      <div class="card-header">
-        <h3>Renault Clio</h3>
-        <span class="status">Loué</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Immatriculation :</strong> 789-TN-321</p>
-        <p><strong>Modèle :</strong> Clio 2022</p>
-        <p><strong>Kilométrage :</strong> 40,000 km</p>
-        <p><strong>Assurance :</strong> 2025-06-10</p>
-      </div>
-      <div class="card-footer">
-        <button class="btn-details">Voir détails</button>
-        <button class="btn-edit">Éditer</button>
-        <button class="btn-delete">Supprimer</button>
-      </div>
-    </div>
-
   </div>
+
 </div>
